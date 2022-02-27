@@ -65,6 +65,12 @@ return [
             'model' => App\Models\User::class,
         ],
 
+        'api' => [
+            'driver' => 'passport',
+            'provider' => App\Models\User::class,
+            'hash' => false,
+        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
