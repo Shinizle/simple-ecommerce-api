@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Spatie\Permission\Exceptions\UnauthorizedException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -35,7 +36,15 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            return $e->getMessage();
+            //
+        });
+
+        $this->renderable(function (UnauthorizedException $e, $request) {
+            return response()->json(['message' => $e->getMessage()], $e->getStatusCode());
+        });
+
+        $this->renderable(function (\ParseError $e, $request) {
+            return response()->json(['message' => $e->getMessage()], 500);
         });
     }
 }
