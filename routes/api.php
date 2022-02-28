@@ -4,8 +4,8 @@ use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductEventController;
+use App\Http\Controllers\Customer\ProductController as CustomerProductController;
 use App\Http\Controllers\Customer\AuthController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +25,11 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('login', [AuthController::class, 'login']);
 
     Route::group(['middleware' => 'auth:api'], function() {
+
+        /*
+         * ROUTE GROUP FOR ADMINISTRATOR ROLE
+         */
+
         Route::group(['middleware' => ['role:'.\App\Models\User::ADMINISTRATOR, 'auth']], function () {
             Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
                 Route::group(['prefix' => 'products'], function () {
@@ -56,6 +61,19 @@ Route::group(['prefix' => 'v1'], function () {
                     Route::get('get-order', [OrderController::class, 'getOrder']);
                     Route::get('get-order-products', [OrderController::class, 'getOrderProducts']);
                     Route::post('complete-order', [OrderController::class, 'completeOrder']);
+                });
+            });
+        });
+
+        /*
+         * ROUTE GROUP FOR CUSTOMER ROLE
+         */
+
+        Route::group(['middleware' => ['role:'.\App\Models\User::CUSTOMER, 'auth']], function () {
+            Route::group(['prefix' => 'client', 'as' => 'client.'], function () {
+                Route::group(['prefix' => 'products'], function () {
+                    Route::get('get-all-products', [CustomerProductController::class, 'getAllProducts']);
+                    Route::get('get-product', [CustomerProductController::class, 'getProduct']);
                 });
             });
         });
