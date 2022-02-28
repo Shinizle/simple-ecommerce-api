@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductEventController;
+use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\ProductController as CustomerProductController;
 use App\Http\Controllers\Customer\AuthController;
 use App\Http\Controllers\Customer\PromotionController;
@@ -87,6 +88,14 @@ Route::group(['prefix' => 'v1'], function () {
                         Route::get('get-all-product-events', [PromotionController::class, 'getAllProductEvents']);
                         Route::get('get-detail-product-event', [PromotionController::class, 'getDetailProductEvent']);
                     });
+                });
+
+                Route::group(['prefix' => 'carts'], function () {
+                    Route::get('get-user-carts', [CartController::class, 'getUserCart']);
+                    Route::get('get-cart', [CartController::class, 'getCart']);
+                    Route::post('add-to-cart', [CartController::class, 'addToCart']);
+                    Route::put('update-item-cart', [CartController::class, 'updateItemCart']);
+                    Route::delete('remove-from-cart', [CartController::class, 'removeFromCart']);
                 });
             });
         });

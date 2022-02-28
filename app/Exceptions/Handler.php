@@ -49,6 +49,10 @@ class Handler extends ExceptionHandler
             return response()->json(['message' => 'Server Error', 'error' => $e->getMessage(), 'file' => $e->getFile(), 'line' => $e->getLine()], 500);
         });
 
+        $this->renderable(function (\ErrorException $e, $request) {
+            return response()->json(['message' => 'Server Error', 'error' => $e->getMessage(), 'file' => $e->getFile(), 'line' => $e->getLine()], 500);
+        });
+
         $this->renderable(function (Error $e, $request) {
             return response()->json(['message' => 'Server Error', 'error' => $e->getMessage(), 'file' => $e->getFile(), 'line' => $e->getLine()], 500);
         });
