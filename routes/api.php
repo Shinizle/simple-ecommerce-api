@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductEventController;
 use App\Http\Controllers\Customer\AuthController;
@@ -48,6 +49,13 @@ Route::group(['prefix' => 'v1'], function () {
                     Route::post('add-product', [ProductEventController::class, 'addNewProduct']);
                     Route::put('edit-product', [ProductEventController::class, 'editProduct']);
                     Route::delete('delete-product', [ProductEventController::class, 'deleteProduct']);
+                });
+
+                Route::group(['prefix' => 'orders'], function () {
+                    Route::get('get-all-orders', [OrderController::class, 'getAllOrders']);
+                    Route::get('get-order', [OrderController::class, 'getOrder']);
+                    Route::get('get-order-products', [OrderController::class, 'getOrderProducts']);
+                    Route::post('complete-order', [OrderController::class, 'completeOrder']);
                 });
             });
         });

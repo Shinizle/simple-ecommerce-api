@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\Contracts\IOrderStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Order extends Model implements IOrderStatus
 {
     use HasFactory;
 
@@ -30,6 +31,6 @@ class Order extends Model
 
     public function orderProducts()
     {
-        return $this->hasMany(OrderProduct::class));
+        return $this->hasMany(OrderProduct::class);
     }
 }
