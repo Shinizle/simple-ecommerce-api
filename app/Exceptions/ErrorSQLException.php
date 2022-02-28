@@ -31,6 +31,6 @@ class ErrorSQLException extends Exception
      */
     public function render($request)
     {
-        return response()->json(['message' => "SQL Error: " . @$this->e->getMessage()], 404);
+        return response()->json(['message' => "SQL Error: " . @$this->e->getMessage()], 500);
     }
 }

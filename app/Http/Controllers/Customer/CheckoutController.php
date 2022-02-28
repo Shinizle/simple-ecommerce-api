@@ -50,6 +50,8 @@ class CheckoutController extends Controller
             /* Clear Carts */
             $carts->delete();
 
+            DB::commit();
+
             return $order;
         } catch (\Exception $e) {
             DB::rollback();
@@ -61,7 +63,7 @@ class CheckoutController extends Controller
     {
 
         /*
-         * Calculate price for each product in cats and validate if product is in stock
+         * Calculate price for each product in carts and validate if product is in stock
          */
 
         $price = 0;
