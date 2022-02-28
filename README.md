@@ -1,64 +1,46 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## System Requirement
+- Any Operation System that can run PHP Programs.
+- Minimum PHP Version: 7.4.
+- Minimum MySQL Version: 5.8.
+- Composer 2 Installed.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Installation Steps
 
-## About Laravel
+Follow the instruction below to properly install this project on your local machine,
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Clone or download this repository to your local directory.
+- Add or create .env file inside the directory project then copy and paste what is writen inside .env.example file given to your .env and customize with your own local setup environment.
+- Open your terminal and go to the directory folder where you install this project.
+- Run, "composer install"
+- Run, "php artisan key:generate"
+- Run, "php artisan migrate"
+- Run, "php artisan passport:install"
+- Run, "php artisan db:seed --class=RoleAndPermissionSeeder"
+- Now you can run the program on your local machine with your local web server such as Laragon, Valet or by php artisan:serve.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Solution of the Task Given
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+As far i know the summary of the task is to prevent negative inventories and prevent incidents from occuring again. So, my solutions are sparating the quantity of the product event e.g Flash Sale 12.12 Promotion Event and add limit to max 90% of the original quantity to the event and leave 10% of the stock to normal selling. For this case i have added 2 products APIs. 1 is related to event and another one is the original product with original price and all quantity.
+- By Sparating the products to 2 APIs, The Administrators must re-check the quantity of the product before they are add it to Product Event.
+- Even they are not, the maximum quantity allowed to add in Product Event is only 90% so if another missreported case happen, we can still use the 10% of the stock from the original product database.
 
-## Learning Laravel
+## Postman Collection
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- JSON Link: https://www.getpostman.com/collections/79637f5f322152a61cd3
+- Open Postman -> Import -> Link Tab -> Paste link above then import.
+- Edit the collection parent folder, select OAuth 2.0 for the Authorization.
+- Paste the token generated from login or register to the authorization form or set in custom variable as shown below.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Example Postman Setting
+- Open Edit Menu Collection
+![alt text](https://cdn.discordapp.com/attachments/493642537576431637/947894017994141726/unknown.png)
 
-## Laravel Sponsors
+- Set Your Custom Variable
+![alt text](https://cdn.discordapp.com/attachments/493642537576431637/947893826880688158/unknown.png)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- Set Auth Token From Variable
+![alt text](https://cdn.discordapp.com/attachments/493642537576431637/947894267316150302/unknown.png)
 
-### Premium Partners
+- Tokens Are Obtained From Login Or Register
+![alt text](https://cdn.discordapp.com/attachments/493642537576431637/947894451592908810/unknown.png)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
