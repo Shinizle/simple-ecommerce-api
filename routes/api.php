@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductEventController;
 use App\Http\Controllers\Customer\ProductController as CustomerProductController;
 use App\Http\Controllers\Customer\AuthController;
+use App\Http\Controllers\Customer\PromotionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -74,6 +75,17 @@ Route::group(['prefix' => 'v1'], function () {
                 Route::group(['prefix' => 'products'], function () {
                     Route::get('get-all-products', [CustomerProductController::class, 'getAllProducts']);
                     Route::get('get-product', [CustomerProductController::class, 'getProduct']);
+                });
+
+                Route::group(['prefix' => 'promotions'], function () {
+                    Route::group(['prefix' => 'events'], function () {
+                        Route::get('get-all-events', [PromotionController::class, 'getAllEvents']);
+                        Route::get('get-detail-event', [PromotionController::class, 'getDetailEvent']);
+                    });
+                    Route::group(['prefix' => 'product-events'], function () {
+                        Route::get('get-all-product-events', [PromotionController::class, 'getAllProductEvents']);
+                        Route::get('get-detail-product-event', [PromotionController::class, 'getDetailProductEvent']);
+                    });
                 });
             });
         });
