@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Customer\AuthController;
 use Illuminate\Http\Request;
@@ -30,6 +31,14 @@ Route::group(['prefix' => 'v1'], function () {
                     Route::post('add-new-product', [ProductController::class, 'addNewProduct']);
                     Route::put('edit-product', [ProductController::class, 'editProduct']);
                     Route::delete('delete-product', [ProductController::class, 'deleteProduct']);
+                });
+
+                Route::group(['prefix' => 'events'], function () {
+                    Route::get('get-all-events', [EventController::class, 'getAllEvents']);
+                    Route::get('get-event', [EventController::class, 'getEvent']);
+                    Route::post('add-new-event', [EventController::class, 'addNewEvent']);
+                    Route::put('edit-event', [EventController::class, 'editEvent']);
+                    Route::delete('delete-event', [EventController::class, 'deleteEvent']);
                 });
             });
         });
