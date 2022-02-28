@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Throwable;
 
 class ErrorSQLException extends Exception
 {
@@ -11,9 +12,15 @@ class ErrorSQLException extends Exception
      *
      * @return bool|null
      */
+    private $e;
     public function report()
     {
         //
+    }
+
+    public function __construct($e = null)
+    {
+        $this->e = $e;
     }
 
     /**
@@ -24,6 +31,6 @@ class ErrorSQLException extends Exception
      */
     public function render($request)
     {
-        return response()->json(['message' => "SQL Error."], 404);
+        return response()->json(['message' => "SQL Error: " . @$this->e->getMessage()], 404);
     }
 }

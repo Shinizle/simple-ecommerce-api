@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductEventController;
 use App\Http\Controllers\Customer\CartController;
+use App\Http\Controllers\Customer\CheckoutController;
 use App\Http\Controllers\Customer\ProductController as CustomerProductController;
 use App\Http\Controllers\Customer\AuthController;
 use App\Http\Controllers\Customer\PromotionController;
@@ -97,6 +98,8 @@ Route::group(['prefix' => 'v1'], function () {
                     Route::put('update-item-cart', [CartController::class, 'updateItemCart']);
                     Route::delete('remove-from-cart', [CartController::class, 'removeFromCart']);
                 });
+
+                Route::post('checkout', [CheckoutController::class, 'handle']);
             });
         });
     });

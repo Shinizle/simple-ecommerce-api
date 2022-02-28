@@ -61,7 +61,7 @@ class Cart extends Model
             $product = $this->event->productEvents()->whereProductId($this->product_id)->first();
             $stock = (int)$product->product_event_qty;
         } else {
-            $stock = (int)$product->qty;
+            $stock = (int)$this->product->qty;
         }
 
         if ($stock >= $this->qty) {
