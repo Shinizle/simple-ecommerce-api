@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Customer;
 
-use App\Exceptions\FailedLoginExeption;
+use App\Exceptions\FailedLoginException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Authentication\CustomerRegisterRequest;
 use App\Http\Requests\Authentication\LoginRequest;
@@ -28,7 +28,7 @@ class AuthController extends Controller
 
             return response()->json(['token' => $token, 'user' => new UserResource($user)], self::SUCCESS_STATUS);
         } else {
-            throw new FailedLoginExeption();
+            throw new FailedLoginException();
         }
     }
 
