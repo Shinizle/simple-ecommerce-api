@@ -19,7 +19,7 @@ class OrderResourceCollection extends ResourceCollection
                 return [
                     'id' => $item->id,
                     'uuid' => $item->uuid,
-                    'user' => new UserResource($product->user),
+                    'user' => new UserResource($item->user),
                     'customer_delivery_name' => $item->customer_delivery_name,
                     'customer_delivery_address' => $item->customer_delivery_address,
                     'customer_delivery_phone' => $item->customer_delivery_phone,

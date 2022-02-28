@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductEventController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\CheckoutController;
 use App\Http\Controllers\Customer\ProductController as CustomerProductController;
+use App\Http\Controllers\Customer\OrderController as CustomerOrderController;
 use App\Http\Controllers\Customer\AuthController;
 use App\Http\Controllers\Customer\PromotionController;
 use Illuminate\Support\Facades\Route;
@@ -97,6 +98,12 @@ Route::group(['prefix' => 'v1'], function () {
                     Route::post('add-to-cart', [CartController::class, 'addToCart']);
                     Route::put('update-item-cart', [CartController::class, 'updateItemCart']);
                     Route::delete('remove-from-cart', [CartController::class, 'removeFromCart']);
+                });
+
+
+                Route::group(['prefix' => 'orders'], function () {
+                    Route::get('get-all-orders', [CustomerOrderController::class, 'getAllOrders']);
+                    Route::get('get-detail-order', [CustomerOrderController::class, 'getCustomerOrderDetail']);
                 });
 
                 Route::post('checkout', [CheckoutController::class, 'handle']);
