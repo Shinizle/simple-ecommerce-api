@@ -12,6 +12,7 @@ class ProductEvent extends Model
     protected $fillable =  [
         'event_id',
         'product_id',
+        'event_price',
         'product_event_qty',
     ];
 

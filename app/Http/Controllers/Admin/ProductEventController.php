@@ -69,7 +69,7 @@ class ProductEventController extends Controller
         $data = ProductEvent::find($request->id);
         $product = Product::find($data->product_id);
         if ($product->isValidEventStock($request)) {
-            $data->update(['product_event_qty' => $request->product_event_qty]);
+            $data->update(['product_event_qty' => $request->product_event_qty, 'event_price' => $request->event_price]);
             $data->save();
 
             return new ProductEventResource($data);

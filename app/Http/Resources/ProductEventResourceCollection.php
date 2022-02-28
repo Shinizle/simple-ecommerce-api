@@ -19,6 +19,7 @@ class ProductEventResourceCollection extends ResourceCollection
                 return [
                     'id' => $item->id,
                     'event_id' => $item->event_id,
+                    'event_price' => $item->event_price,
                     'product_event_qty' => $item->product_event_qty,
                     'product' => new ProductResource($item->product),
                     'created_at' => $item->created_at,
