@@ -22,6 +22,7 @@ class EventResourceCollection extends ResourceCollection
                     'description' => $item->description,
                     'price' => $item->start_periode,
                     'qty' => $item->end_periode,
+                    'is_active' => $item->is_active,
                     'created_at' => $item->created_at,
                     'updated_at' => $item->updated_at,
                 ];

@@ -47,6 +47,7 @@ Route::group(['prefix' => 'v1'], function () {
                     Route::post('add-new-event', [EventController::class, 'addNewEvent']);
                     Route::put('edit-event', [EventController::class, 'editEvent']);
                     Route::delete('delete-event', [EventController::class, 'deleteEvent']);
+                    Route::put('update-status', [EventController::class, 'updateStatus']);
                 });
 
                 Route::group(['prefix' => 'product-events'], function () {

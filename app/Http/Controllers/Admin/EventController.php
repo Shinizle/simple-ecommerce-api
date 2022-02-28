@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\AddNewEventRequest;
 use App\Http\Requests\Admin\DeleteEventRequest;
 use App\Http\Requests\Admin\EditEventRequest;
 use App\Http\Requests\Admin\GetEventRequest;
+use App\Http\Requests\Admin\UpdateStatusEventRequest;
 use App\Http\Resources\EventResource;
 use App\Http\Resources\EventResourceCollection;
 use App\Models\Event;
@@ -64,5 +65,13 @@ class EventController extends Controller
 
             return response()->json(['message' => 'Event deleted succesfully.'], self::SUCCESS_STATUS);
         }
+    }
+
+    public function updateStatus(UpdateStatusEventRequest $request)
+    {
+        $data = Event::find($request->id);
+        $data->update(['is_active' => $request->is_active]);
+
+        return new EventResource($data);
     }
 }

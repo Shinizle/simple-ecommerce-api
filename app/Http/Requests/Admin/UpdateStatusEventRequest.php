@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditEventRequest extends FormRequest
+class UpdateStatusEventRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +25,7 @@ class EditEventRequest extends FormRequest
     {
         return [
             'id' => ['required', 'exists:events,id'],
-            'name' => ['required', 'max:255'],
-            'description' => ['required'],
-            'start_periode' => ['required', 'date_format:Y-m-d H:i:s'],
-            'end_periode' => ['required', 'date_format:Y-m-d H:i:s'],
-            'is_active' => ['boolean', 'nullable']
+            'is_active' => ['boolean', 'required']
         ];
     }
 }

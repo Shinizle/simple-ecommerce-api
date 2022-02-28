@@ -15,6 +15,7 @@ class Event extends Model
         'description',
         'start_periode',
         'end_periode',
+        'is_active'
     ];
 
     public function productEvents()
