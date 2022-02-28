@@ -16,4 +16,13 @@ class Product extends Model
         'qty',
     ];
 
+    public function isValidEventStock($data)
+    {
+        $qtyLimit = floor((double)$this->qty * 0.90);
+        if ((double)$data->product_event_qty <= $qtyLimit) {
+            return true;
+        }
+
+        return false;
+    }
 }
