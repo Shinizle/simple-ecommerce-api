@@ -87,6 +87,14 @@ class CheckoutController extends Controller
                 'unit_price' => $cart->getCartPrice(),
                 'subtotal' => $cart->getTotalPrice()
             ]);
+
+            /* Update Quantity of the Products */
+            if ($cart->is_event) {
+                $productEvent = $cart->event->productEvents()->whereProductId($cart->product_id)->first();
+                $productEvent->update(['product_event_qty' => $productEvent->product_event_qty - $cart->qty]);
+            }
+
+            $cart->product()->update(['qty' => $cart->product->qty - $cart->qty]);
         }
     }
 }
