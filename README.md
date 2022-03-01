@@ -42,5 +42,5 @@ As far i know the summary of the task is to prevent negative inventories and pre
 ![alt text](https://cdn.discordapp.com/attachments/493642537576431637/947894267316150302/unknown.png)
 
 - Tokens Are Obtained From Login Or Register
-![alt text](https://cdn.discordapp.com/attachments/493642537576431637/947894451592908810/unknown.png)
+![alt text](https://cdn.discordapp.com/attachments/493642537576431637/948126127929565184/unknown.png)
 
